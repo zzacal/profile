@@ -5,7 +5,10 @@ import { svelte } from '@sveltejs/vite-plugin-svelte'
 export default defineConfig({
   server: {
     proxy: {
-      '/weatherforecast': 'http://localhost:5101'
+      '/api': {
+        target: 'http://localhost:5101', 
+        changeOrigin: true
+      }
     }
   },
   plugins: [svelte()],
