@@ -1,7 +1,18 @@
 <script lang="ts">
+  type WeatherForecase = {
+    date: Date,
+    temperatureC: number,
+    temperatureF: number,
+    summary?: string
+  }
+
   let count: number = 0
-  const increment = () => {
-    count += 1
+  let weather: Array<WeatherForecase> = []
+  const increment = async () => {
+    count += 1;
+    const response = await fetch("/weatherforecast");
+    weather = await response.json();
+    console.log(weather);
   }
 </script>
 
