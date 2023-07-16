@@ -2,8 +2,9 @@
   import svelteLogo from './assets/svelte.svg'
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
+  import Navigation from './lib/Navigation.svelte';
 </script>
-
+<Navigation />
 <main>
   <div>
     <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
