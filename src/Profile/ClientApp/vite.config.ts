@@ -1,15 +1,16 @@
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
+import basicSsl from '@vitejs/plugin-basic-ssl'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5101', 
+        target: 'https://localhost:7230', 
         changeOrigin: true
       }
     }
   },
-  plugins: [svelte()],
+  plugins: [svelte(), basicSsl()],
 })
