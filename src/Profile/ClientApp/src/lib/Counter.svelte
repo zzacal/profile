@@ -10,7 +10,7 @@
   let weather: Array<WeatherForecase> = []
   const increment = async () => {
     count += 1;
-    const response = await fetch("/api/weatherforecast");
+    const response = await fetch("/api/blog");
     weather = await response.json();
     console.log(weather);
   }

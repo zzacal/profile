@@ -22,8 +22,13 @@ public class BlogController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IEnumerable<BlogMeta>> Get()
+    public async Task<List<BlogMeta>> Get()
     {
-        return await _blogs.GetBlogList();
+        try {
+            return (await _blogs.GetBlogList()).ToList();
+        }
+        catch {
+            return new (){new BlogMeta(Path: "Hey", Url: "Url")};
+        }
     }
 }
