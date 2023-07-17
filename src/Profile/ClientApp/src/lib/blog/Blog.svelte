@@ -1,22 +1,42 @@
 <script lang="ts">
   import {onMount} from "svelte";
+  type BlogPage = {
+    blog: Blog,
+    list: Array<BlogMeta>
+  };
+  type Blog = {
+    title: string,
+    body: string
+  };
   type BlogMeta = {
+    sha: string,
     path: string,
-    url: string
-  }
+    url: string,
+    name: string,
+    date: string
+  };
 
   let count: number = 0
-  let blogs: Array<BlogMeta> = [];
-  const getBlogs = async () : Promise<Array<BlogMeta>> => {
+  let page: BlogPage = {
+    blog: {
+      title: "",
+      body: ""
+    },
+    list: []
+  };
+  const getBlogs = async () : Promise<BlogPage> => {
     count += 1;
     const response = await fetch("/api/blog");
     return await response.json();
   }
   onMount(async () => {
-    blogs = await getBlogs();
+    page = await getBlogs();
   })
 </script>
-
-{#each blogs as blog}
-	{blog.path} | {blog.url}
+<div>
+<h1>{page.blog.title}</h1>
+{page.blog.body}
+</div>
+{#each page.list as meta}
+	{meta.name} | {meta.date} | {meta.sha} | {meta.url}
 {/each}
