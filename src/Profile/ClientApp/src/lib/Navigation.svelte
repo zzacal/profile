@@ -5,8 +5,7 @@
   
 <nav>
   <ul>
-    <li><a href="/">cv</a></li>
-    <li><a href="/blog">blog</a></li>
+    <li><a href="/">blog</a></li>
     <li><a href="https://www.linkedin.com/in/zac-zacal" target="_blank"><img class="link-svg" src={linkedin} alt="LinkedIn" /></a></li>
     <li><a href="https://github.com/zzacal" target="_blank"><img class="link-svg" src={github} alt="Github" /></a></li>
   </ul>

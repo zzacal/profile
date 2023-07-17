@@ -1,8 +1,13 @@
+using Profile.Blog;
+using Profile.Github;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
+builder.Services.AddSingleton<GithubService>();
+builder.Services.AddSingleton<BlogService>();
 
 var app = builder.Build();
 
