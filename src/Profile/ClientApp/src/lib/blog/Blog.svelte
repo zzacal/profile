@@ -1,5 +1,6 @@
 <script lang="ts">
   import {onMount} from "svelte";
+  import showdown from "showdown";
   type BlogPage = {
     blog: Blog,
     list: Array<BlogMeta>
@@ -30,13 +31,21 @@
     return await response.json();
   }
   onMount(async () => {
+    const converter = new showdown.Converter(page.blog.body);
     page = await getBlogs();
+    page.blog.body = converter.makeHtml(page.blog.body);
   })
 </script>
-<div>
-<h1>{page.blog.title}</h1>
-{page.blog.body}
+
+<div id="blog" class='blog-body'>
+  {@html page.blog.body}
 </div>
 {#each page.list as meta}
 	{meta.name} | {meta.date} | {meta.sha} | {meta.url}
 {/each}
+
+<style>
+.blog-body {
+  text-align: left;
+}
+</style>

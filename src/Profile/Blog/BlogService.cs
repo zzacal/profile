@@ -15,21 +15,26 @@ public class BlogService
     public async Task<BlogPage> GetBlogPage(string? sha = null)
     {
         var list = await GetBlogList();
-        var blog = await GetBlog(sha ?? list.FirstOrDefault()?.Path ?? "");
-        return new BlogPage(Blog: blog ?? new Blog(Title: "Not Found", Body: "Could not find the blog", Published: null), List: list);
+        if(list.FirstOrDefault() is BlogMeta meta) {
+            var content = await GetContent(list.FirstOrDefault()?.Path ?? "");
+            var blog = ToBlog(content, meta);
+            return new BlogPage(Blog: blog ?? new Blog(Title: "Not Found", Body: "Could not find the blog", Published: null), List: list);
+        };
+
+        return new BlogPage(
+            Blog: new Blog("", ""),
+            List: list
+        );
     }
 
-    public async Task<Blog?> GetBlog(string path)
+    public async Task<string> GetContent(string path)
     {
-        return await _github.GetBlob("zzacal", "blog", "main", path) switch {
-            Blob blob => ToBlog(blob),
-            _ => null
-        };
+        return await _github.GetContent("zzacal", "blog", "main", path);
     }
 
     public async Task<IEnumerable<BlogMeta>> GetBlogList()
     {
-        var nodes = await _github.GetTree("zzacal", "blog", "main", true, "entries", ".md");
+        var nodes = await _github.GetTree("zzacal", "blog", "main", true, "blog", ".md");
         return nodes.Select(n => ToBlogMeta(n));
     }
 
@@ -40,11 +45,11 @@ public class BlogService
         return new BlogMeta(Sha: node.Sha, Path: node.Path, Url: node.Url, Name: name, Date: date);
     }
 
-    private Blog ToBlog(Blob blob)
+    private Blog ToBlog(string body, BlogMeta meta)
     {
-        return new Blog(Title: "We'll figure it out", Body: System.Text.Encoding.UTF8.GetString(Encoding.ASCII.GetBytes(blob.Content)), Published: DateOnly.FromDateTime(DateTime.Now));
+        return new Blog(Title: "We'll figure it out", Body: body, Published: DateOnly.FromDateTime(DateTime.Now));
     }
 }
 public record BlogPage(Blog Blog, IEnumerable<BlogMeta> List);
 public record BlogMeta(string Sha, string Path, string Date, string Name, string Url);
-public record Blog(string Title, string Body, DateOnly? Published);
+public record Blog(string Title, string Body, DateOnly? Published = null);
