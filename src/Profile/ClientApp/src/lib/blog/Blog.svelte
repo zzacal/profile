@@ -1,6 +1,9 @@
 <script lang="ts">
   import {onMount} from "svelte";
   import showdown from "showdown";
+  export let currentRoute;
+  let {year, month, day, folder} = currentRoute.namedParams;
+  const path = [year, month, day, folder].filter(i => !!i).join('/');
   type BlogPage = {
     blog: Blog,
     list: Array<BlogMeta>
@@ -25,18 +28,20 @@
     },
     list: []
   };
+
   const getBlogs = async () : Promise<BlogPage> => {
     count += 1;
-    const response = await fetch("/api/blog?path=2023/07/16/dotnet-vite/");
+    const response = await fetch(`/api/blog?path=${path}`);
     return await response.json();
-  }
+  };
+
   onMount(async () => {
     const converter = new showdown.Converter(page.blog.body);
     page = await getBlogs();
     page.blog.body = converter.makeHtml(page.blog.body);
-  })
+  });
 </script>
-
+<h1>{path}</h1>
 <div id="blog" class='blog-body'>
   {@html page.blog.body}
 </div>

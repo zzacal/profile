@@ -1,10 +1,12 @@
 <script lang="ts">
+  import { routes } from './Routes';
   import Navigation from './lib/Navigation.svelte';
   import Blog from './lib/blog/Blog.svelte';
+  import { Router } from "svelte-router-spa";
 </script>
 <Navigation />
 <main>
-    <Blog />
+    <Router {routes}/>
 </main>
 
 <style>
