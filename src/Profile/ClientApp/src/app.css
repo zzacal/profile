@@ -41,10 +41,18 @@ h1 {
 }
 
 #app {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: .25rem;
   text-align: center;
+}
+@media screen and (min-width: 1280px) {
+  #app {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: .5rem;
+    text-align: center;
+  }
 }
 
 button {
