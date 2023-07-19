@@ -27,7 +27,7 @@
   };
   const getBlogs = async () : Promise<BlogPage> => {
     count += 1;
-    const response = await fetch("/api/blog");
+    const response = await fetch("/api/blog?path=2023/07/16/dotnet-vite/");
     return await response.json();
   }
   onMount(async () => {

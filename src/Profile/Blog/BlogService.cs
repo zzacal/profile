@@ -12,9 +12,9 @@ public class BlogService
         _github = github;
     }
 
-    public async Task<BlogPage> GetBlogPage(string? sha = null)
+    public async Task<BlogPage> GetBlogPage(string path)
     {
-        var list = await GetBlogList();
+        var list = await GetBlogList(path);
         if(list.FirstOrDefault() is BlogMeta meta) {
             var content = await GetContent(list.FirstOrDefault()?.Path ?? "");
             var blog = ToBlog(content, meta);
@@ -32,9 +32,9 @@ public class BlogService
         return await _github.GetContent("zzacal", "blog", "main", path);
     }
 
-    public async Task<IEnumerable<BlogMeta>> GetBlogList()
+    public async Task<IEnumerable<BlogMeta>> GetBlogList(string path)
     {
-        var nodes = await _github.GetTree("zzacal", "blog", "main", true, "blog", ".md");
+        var nodes = await _github.GetTree("zzacal", "blog", "main", true, $"blog/{path}", ".md");
         return nodes.Select(n => ToBlogMeta(n));
     }
 

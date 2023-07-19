@@ -22,8 +22,8 @@ public class BlogController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<BlogPage> Get()
+    public async Task<BlogPage> Get(string path = "")
     {
-        return await _blogs.GetBlogPage();
+        return await _blogs.GetBlogPage(path);
     }
 }
