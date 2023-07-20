@@ -17,7 +17,9 @@
     display: inline-block;
   }
   li + li::before {
-    content: " | ";
+    content: " • ";
+    font-size: 1.5rem;
+    vertical-align: sub;
   }
   
   .link-svg {
