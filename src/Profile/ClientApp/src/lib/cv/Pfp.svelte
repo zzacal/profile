@@ -1,8 +1,4 @@
-<script>
-  import pfp from '../../../public/profile-min.jpg';
-</script>
-
-<img class="pfp" src={pfp} alt="zac profile" />
+<img class="pfp" src="profile-min.jpg" alt="zac profile" />
 
 <style>
   img {

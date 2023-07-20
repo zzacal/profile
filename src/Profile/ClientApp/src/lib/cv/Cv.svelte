@@ -1,5 +1,7 @@
 <script>
-  import Pfp from './Pfp.svelte';
+  import Disgpt from '../Disgpt.svelte';
+import MediaCard from '../Disgpt.svelte';
+import Pfp from './Pfp.svelte';
 </script>
 
 <header id="intro">
@@ -12,7 +14,12 @@
   </div>
 </header>
 
+<h2 class="project-heading">Projects</h2>
+<Disgpt />
 <style>
+  .project-heading {
+    text-decoration: underline;
+  }
   #intro {
     margin-top: 2rem;
     display: flex;

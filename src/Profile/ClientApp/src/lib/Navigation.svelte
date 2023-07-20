@@ -1,14 +1,9 @@
-<script lang="ts">
-  import linkedin from '../../public/linkedin.svg';
-  import github from '../../public/github.svg';
-</script>
-  
 <nav>
   <ul>    
     <li><a href="/">home</a></li>
     <li><a href="/blog">blog</a></li>
-    <li><a href="https://www.linkedin.com/in/zac-zacal" target="_blank"><img class="link-svg" src={linkedin} alt="LinkedIn" /></a></li>
-    <li><a href="https://github.com/zzacal" target="_blank"><img class="link-svg" src={github} alt="Github" /></a></li>
+    <li><a href="https://www.linkedin.com/in/zac-zacal" target="_blank"><img class="link-svg" src="/linkedin.svg" alt="LinkedIn" /></a></li>
+    <li><a href="https://github.com/zzacal" target="_blank"><img class="link-svg" src="/github.svg" alt="Github" /></a></li>
   </ul>
 </nav>
 
