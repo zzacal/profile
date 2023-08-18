@@ -60,6 +60,7 @@
     align-items: center;
     gap: 1rem;
   }
+  
   .link-icon {
     width: 2rem;
   }

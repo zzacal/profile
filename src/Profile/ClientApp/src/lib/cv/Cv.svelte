@@ -1,8 +1,9 @@
 <script>
-  import Highlight from '../elements/Highlight.svelte';
-import Disgpt from './Disgpt.svelte';
   import Pfp from './Pfp.svelte';
-  import RollyRetry from './RollyRetry.svelte';
+  import Disgpt from '../projects/Disgpt.svelte';
+  import RollyRetry from '../projects/RollyRetry.svelte';
+  import Blog from '../projects/BlogHighlight.svelte';
+  import BlogHighlight from '../projects/BlogHighlight.svelte';
 </script>
 
 <header id="intro">
@@ -19,6 +20,7 @@ import Disgpt from './Disgpt.svelte';
 <div class="project-list">
   <Disgpt />
   <RollyRetry />
+  <BlogHighlight />
 </div>
 <style lang="scss">
   .project-heading {
@@ -27,13 +29,13 @@ import Disgpt from './Disgpt.svelte';
 
   .project-list {
     display: flex;
-    flex: 1 1 0px;
+    flex-wrap: wrap;
     gap: 1rem;
     > :global(*) {
-      flex: 1 1 0px;
+      flex: 1 1 300px;
     }
   }
-  
+
   #intro {
     margin-top: 2rem;
     display: flex;

@@ -5,7 +5,7 @@
 <Highlight
   title="rolly retry"
   icon={{url: "/npm.svg", alt: "npm"}}
-  description="A retry library with types!"
+  description="a retry library with types!"
   links={[{
     url: "https://www.npmjs.com/package/rolly-retry",
     icon: {
