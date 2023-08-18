@@ -2,8 +2,8 @@
   import Pfp from './Pfp.svelte';
   import Disgpt from '../projects/Disgpt.svelte';
   import RollyRetry from '../projects/RollyRetry.svelte';
-  import Blog from '../projects/BlogHighlight.svelte';
   import BlogHighlight from '../projects/BlogHighlight.svelte';
+  import Tilda from '../projects/Tilda.svelte';
 </script>
 
 <header id="intro">
@@ -21,6 +21,7 @@
   <Disgpt />
   <RollyRetry />
   <BlogHighlight />
+  <Tilda />
 </div>
 <style lang="scss">
   .project-heading {
@@ -32,7 +33,8 @@
     flex-wrap: wrap;
     gap: 1rem;
     > :global(*) {
-      flex: 1 1 300px;
+      flex: 1 1 400px;
+      padding: 1rem;
     }
   }
 
