@@ -17,7 +17,7 @@
 </script>
 <div class="highlight">
   {#if icon != null}
-    <img src={icon.url} alt={icon.alt}>
+    <img class="icon" src={icon.url} alt={icon.alt}>
   {/if}
   <h2>{title}</h2>
   <p>{description}</p>
@@ -33,15 +33,27 @@
   </ul>
 </div>
 
-<style>
+<style lang="scss">
+  @import "../../colors";
   .highlight {
     margin-top: 1rem;
-    background-color: #134;
+    color: $text-light;
+    background-color: $background-light;
     padding: .5rem;
     border-radius: 1rem;
     overflow: hidden;
+    @media (prefers-color-scheme: light) {
+      color: $text-dark;
+      background-color: $background-dark;
+    }
+  }
+  .icon {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 1.5rem;
   }
   .links {
+    padding: 0;
     list-style: none;
     display: flex;
     justify-content: center;

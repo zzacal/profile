@@ -17,23 +17,7 @@ import Disgpt from './Disgpt.svelte';
 
 <h2 class="project-heading">Projects</h2>
 <Disgpt />
-<Highlight
-  title="rolly retry"
-  icon={{url: "/npm.svg", alt: "npm"}}
-  description="A retry library with types!"
-  links={[{
-    url: "https://www.npmjs.com/package/rolly-retry",
-    icon: {
-      url: "/npm.svg",
-      alt:"rolly-retry npmjs"
-    }
-  }, {
-    url: "https://github.com/zzacal/rolly-retry",
-    icon: {
-      url: "/github.svg",
-      alt:"rolly-retry source code"
-    }
-  }]} />
+<RollyRetry />
 <style>
   .project-heading {
     text-decoration: underline;
