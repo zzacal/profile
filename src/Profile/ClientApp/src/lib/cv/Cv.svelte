@@ -16,12 +16,24 @@ import Disgpt from './Disgpt.svelte';
 </header>
 
 <h2 class="project-heading">Projects</h2>
-<Disgpt />
-<RollyRetry />
-<style>
+<div class="project-list">
+  <Disgpt />
+  <RollyRetry />
+</div>
+<style lang="scss">
   .project-heading {
     text-decoration: underline;
   }
+
+  .project-list {
+    display: flex;
+    flex: 1 1 0px;
+    gap: 1rem;
+    > :global(*) {
+      flex: 1 1 0px;
+    }
+  }
+  
   #intro {
     margin-top: 2rem;
     display: flex;
