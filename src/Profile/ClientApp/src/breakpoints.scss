@@ -1,0 +1,26 @@
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+$breakpoint-extra-large: 1200px;
+
+@mixin at-width($breakpoint) {
+  @if $breakpoint == small {
+    @media (min-width: $breakpoint-small) {
+      @content;
+    }
+  } @else if $breakpoint == medium {
+    @media (min-width: $breakpoint-medium) {
+      @content;
+    }
+  } @else if $breakpoint == large {
+    @media (min-width: $breakpoint-large) {
+      @content;
+    }
+  } @else if $breakpoint == extra-large {
+    @media (min-width: $breakpoint-extra-large) {
+      @content;
+    }
+  } @else {
+    @error "Invalid breakpoint: #{$breakpoint}.";
+  }
+}

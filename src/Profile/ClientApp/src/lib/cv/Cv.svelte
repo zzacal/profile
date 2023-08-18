@@ -39,10 +39,11 @@
   }
 
   #intro {
-    margin-top: 2rem;
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-top: 2rem;
+    padding: 0 1rem;
   }
   #summary {
     text-align: left;
