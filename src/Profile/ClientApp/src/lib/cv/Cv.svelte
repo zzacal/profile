@@ -1,5 +1,6 @@
 <script>
-  import Disgpt from './Disgpt.svelte';
+  import Highlight from '../elements/Highlight.svelte';
+import Disgpt from './Disgpt.svelte';
   import Pfp from './Pfp.svelte';
   import RollyRetry from './RollyRetry.svelte';
 </script>
@@ -16,7 +17,23 @@
 
 <h2 class="project-heading">Projects</h2>
 <Disgpt />
-<RollyRetry />
+<Highlight
+  title="rolly retry"
+  icon={{url: "/npm.svg", alt: "npm"}}
+  description="A retry library with types!"
+  links={[{
+    url: "https://www.npmjs.com/package/rolly-retry",
+    icon: {
+      url: "/npm.svg",
+      alt:"rolly-retry npmjs"
+    }
+  }, {
+    url: "https://github.com/zzacal/rolly-retry",
+    icon: {
+      url: "/github.svg",
+      alt:"rolly-retry source code"
+    }
+  }]} />
 <style>
   .project-heading {
     text-decoration: underline;
