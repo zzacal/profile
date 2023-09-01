@@ -3,6 +3,7 @@
 <style>
   img {
     border-radius: 50%;
-    max-width: 7rem;
+    width: 7rem;
+    height: 7rem;
   }
 </style>

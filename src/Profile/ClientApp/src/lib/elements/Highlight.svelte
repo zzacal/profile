@@ -62,6 +62,7 @@
   }
   
   .link-icon {
+    height: 2rem;
     width: 2rem;
   }
 </style>
