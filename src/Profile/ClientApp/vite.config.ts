@@ -32,8 +32,8 @@ export default defineConfig({
         display: "standalone",
         icons: [
           {
-            src: "/chihuahua.png",
-            sizes: "1024x1024",
+            src: "/chi.png",
+            sizes: "715x715",
             type: "image/png",
             purpose: "maskable any",
           },
