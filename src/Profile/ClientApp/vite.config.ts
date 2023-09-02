@@ -19,11 +19,25 @@ export default defineConfig({
     svelte(),
     basicSsl(),
     VitePWA({
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,svg,png,woff2}"],
+      },
       registerType: "autoUpdate",
-      /* enable sw on development */
-      devOptions: {
-        enabled: true,
-        /* other options */
+      manifest: {
+        background_color: "#2B2B2B",
+        theme_color: "#e3d4bf",
+        name: "thezacal",
+        short_name: "thezacal",
+        start_url: "/",
+        display: "standalone",
+        icons: [
+          {
+            src: "/chihuahua.png",
+            sizes: "1024x1024",
+            type: "image/png",
+            purpose: "maskable any",
+          },
+        ],
       },
     }),
   ],

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Profile.Blog;
 using Profile.Github;
 
@@ -9,6 +10,16 @@ builder.Services.AddHttpClient();
 builder.Services.AddSingleton<GithubService>();
 builder.Services.AddSingleton<BlogService>();
 
+builder.Services.AddResponseCaching();
+builder.Services.AddControllers(options =>
+{
+    options.CacheProfiles.Add("Default",
+        new CacheProfile()
+        {
+            Duration = 30
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,6 +29,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
     app.UseHttpsRedirection();
 }
+
+app.UseResponseCaching();
 
 app.UseStaticFiles();
 app.UseRouting();
